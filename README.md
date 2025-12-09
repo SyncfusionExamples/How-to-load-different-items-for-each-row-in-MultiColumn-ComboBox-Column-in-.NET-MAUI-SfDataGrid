@@ -41,7 +41,7 @@ In the following code, ItemsSource for `ShipCity` column is returned based on `S
 </syncfusion:SfDataGrid>
 ```
 
-## Xaml.cs
+## C#
 ```
 internal class ItemsSourceSelector : IItemsSourceSelector
 {
@@ -70,7 +70,7 @@ internal class ItemsSourceSelector : IItemsSourceSelector
 
 ### ScreenShot
 
-Here is the expected output when executing the sample:
+The following screenshots illustrate different ShipCity ItemsSource bound to each row of the MultiColumnDropDownList based on country name.
 
 <img src="Images/maui-datagrid-MultiColumn-ComboBox-column-itemsourceselector.png" width = 404 height = 500/>
 
