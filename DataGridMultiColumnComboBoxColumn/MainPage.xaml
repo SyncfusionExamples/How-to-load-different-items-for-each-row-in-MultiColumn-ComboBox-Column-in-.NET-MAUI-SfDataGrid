@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataGridMultiColumnComboBoxColumn.MainPage"
+             xmlns:local ="clr-namespace:DataGridMultiColumnComboBoxColumn"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid">
+
+    <ContentPage.BindingContext>
+        <local:OrdersViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <local:ItemsSourceSelector x:Key="itemSourceSelector"/>
+    </ContentPage.Resources>
+
+    <syncfusion:SfDataGrid ItemsSource="{Binding Orders}"  
+                           AllowEditing="True" 
+                           SelectionMode="Single" 
+                           AutoGenerateColumnsMode="None"
+                           ColumnWidthMode="Auto">
+        <syncfusion:SfDataGrid.Columns>
+            <syncfusion:DataGridNumericColumn MappingName="OrderID" HeaderText="Order ID" Format="D"/>
+            <syncfusion:DataGridTextColumn HeaderText="Customer ID" MappingName="CustomerID" />
+            <syncfusion:DataGridNumericColumn HeaderText="Supplier ID" MappingName="SupplierID" />
+            <syncfusion:DataGridMultiColumnComboBoxColumn AutoGenerateColumnsMode="None"
+                                                          DisplayMember="ShipCity"
+                                                          HeaderText="Ship City"
+                                                          ItemsSourceSelector="{StaticResource itemSourceSelector}"
+                                                          MappingName="ShipCity"
+                                                          ValueMember="ShipCity">
+                <syncfusion:DataGridMultiColumnComboBoxColumn.Columns>
+                    <syncfusion:DataGridTextColumn HeaderText="Ship City" MappingName="ShipCity" />
+                    <syncfusion:DataGridCheckBoxColumn HeaderText="Is Primary" MappingName="IsPrimary" />
+                </syncfusion:DataGridMultiColumnComboBoxColumn.Columns>
+            </syncfusion:DataGridMultiColumnComboBoxColumn>
+            <syncfusion:DataGridTextColumn MappingName="ShipCountry" HeaderText="Ship Country"/>
+            <syncfusion:DataGridDateColumn MappingName="ShippingDate" HeaderText="Shipping Date"/>
+            <syncfusion:DataGridNumericColumn MappingName="Freight" HeaderText="Freight"/>
+            <syncfusion:DataGridCheckBoxColumn HeaderText="Is Delivered" MappingName="IsDelivered" />
+        </syncfusion:SfDataGrid.Columns>
+    </syncfusion:SfDataGrid>
+
+</ContentPage>
